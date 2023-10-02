@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+
+    <div class="card text-white border-2 bg-dark mb-3 mx-auto login-card">
+        <div class="card-header border-bottom border-secondary">Log In</div>
+        <div class="card-body card-body-custom">
+            {% from "_formhelpers.html" import render_field %}
+            <form method=post>
+                {{ form.hidden_tag() }}
+                <div class="mb-3 mx-auto width-75-card">
+                    <dl class="text-light">
+                        {{ render_field(form.username) }}
+                        {{ render_field(form.password) }}
+                    </dl>
+                    <br>
+                    {{ form.submit(class="btn btn-warning form-control") }}
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

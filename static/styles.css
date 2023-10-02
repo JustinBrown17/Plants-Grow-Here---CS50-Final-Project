@@ -1,0 +1,275 @@
+@import "root.css";
+   /*TODO: remove important, where possible*/
+
+/*! Display responsiveness */
+
+    /*! Contact : */
+
+        /** Contact : Translate so scroll goes to right location */
+        .link-user-index {
+            margin-bottom: 20px;
+            transform: translateY(-150px);
+        }
+
+        /** Contact : horizontal spacing between contact cards
+            spacer needed not to smash cards together*/
+        .side-spacer {
+            width: 10px; /* middle spacing = value*2*/
+        }
+
+        /** Contact : Wrap long text in contact info on smaller displays*/
+        .wrapword {
+            white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+            white-space: -webkit-pre-wrap;          /* Chrome & Safari */
+            white-space: -pre-wrap;                 /* Opera 4-6 */
+            white-space: -o-pre-wrap;               /* Opera 7 */
+            white-space: pre-wrap;                  /* CSS3 */
+            word-wrap: break-word;                  /* Internet Explorer 5.5+ */
+            word-break: break-all;
+            white-space: normal;
+        }
+
+        /*! Display sizing : */
+
+            /** Displays < 1133px (when text begins to wrap) : 100% width on images
+                No inline picture aligning, pics are centered
+                Makes picture max width of card */
+            @media only screen
+            and (max-width : 1133px) {
+                img:not(.icon) {
+                    height: auto !important;
+                    width: 100% !important;
+                }
+            }
+
+            /** Displays < 300px : Remove card L/R padding */
+            @media only screen
+            and (max-width : 500px) {
+
+                /* Index: reduce card padding */
+                .px-500 {
+                    width: 100% !important;
+                    padding-left: var(--side-spacer-min) !important;
+                    padding-right: var(--side-spacer-min) !important;
+                }
+                /* Contact: Reduce side spacer, spacer needed not to smash cards together*/
+                .side-spacer {
+                    width: var(--side-spacer-min);
+                }
+                /* Layout: Reduce narbar brand name margin, to keep inline better */
+                .navbar-brand {
+                    margin: 0px, 8px, 0px, 0px !important;
+                }
+                nav .navbar-brand {
+                    font-size: x-large !important;
+                }
+            }
+
+            /** Reduce brand name size for even smaller displays */
+            @media only screen
+            and (max-width : 375px) {
+                nav .navbar-brand {
+                    text-align: center !important;
+                    font-size: large !important;
+                }
+            }
+
+
+/*! All pages styling */
+
+        /*! All Bootstap card settings : */
+            .card-header{
+                font-size: x-large;
+            }
+            .card-title{
+                font-size: large;
+                margin: 0px;
+            }
+            .inline{
+                flex-wrap: nowrap;
+            }
+            .card-subtitle p {
+                margin: 0px;
+            }
+            .card-body-custom {
+                background-color: var(--card-background);
+            }
+
+            /** stretch spacing for card underlines */
+                .grow2 {
+                    flex-grow: 2;
+                }
+                .grow4 {
+                    flex-grow: 4;
+                }
+                .wrap {
+                    flex-wrap: wrap;
+                }
+
+
+/*! Layout : */
+
+    /** Text size for brand */
+    nav .navbar-brand {
+        font-size: xx-large;
+    }
+
+    /** Background Image */
+    body{
+        background-image: url(https://image.freepik.com/free-vector/exotic-plant-simple-tropical-monstera-leaves-seamless-repeat-pattern_97843-269.jpg);
+        /*url(https://static.vecteezy.com/system/resources/previews/001/234/686/original/green-leaves-repeated-pattern-vector.jpg);*/
+        background-repeat: repeat-x repeat-y;
+        background-position: right top;
+        background-size: 300px auto;
+    }
+
+    /** Layout : alert handling */
+    .no-margin{
+        margin: 0px;
+    }
+    .card-text{
+        padding: .1rem !important;
+    }
+
+
+
+/*! Format Bootstrap cards page specific */
+
+    /** Contact, Login, Register, Account : smaller cards */
+    .contact-card, .login-card, .register-card, .acct-card {
+        max-width: 500px !important; /*TODO: important needed, find effect */
+    }
+
+    /** Contact, Account : card width size */
+    .card-500px {
+        width: 500px;
+    }
+
+    /** Login/Register : cards: reduced form size to 75% */
+    .width-75-card {
+        width: 75%;
+        max-width: 375px;
+    }
+
+
+    /** All other cards : 1000px width */
+    .card:not(.contact-card, .login-card, .register-card, .acct-card) {
+        max-width: 1000px;
+    }
+
+
+/*! Index.html : */
+
+    /** Size post images */
+    img:not(.icon) {
+        max-height: 500px !important;
+        min-height: 200px !important;
+        object-fit: cover;
+        height: auto !important;
+        width: 100%;
+        border-radius: 30px !important;
+        padding: .5em;
+        margin: auto;
+        text-align: center;
+    }
+
+    /** Change highligthed text color */
+    .marker {
+        background-color: var(--warning-dark);
+    }
+
+
+/*! Links : */
+
+    /** Make simple text decoration for links
+        change link styles
+        includes: .simple-anchor, .nav-link */
+    a:not(.col, .navbar-brand, .btn) {
+        color: var(--warning) !important;
+        text-decoration: none;
+    }
+    a:hover:not(.col, .navbar-brand, .btn) {
+        color: var(--warning-light) !important;
+        text-decoration: underline;
+    }
+
+
+/*! Borders : */
+
+    /** Color all borders */
+    .border-2, .border-bottom{
+        border-color: var(--warning);
+    }
+
+
+/*! Icon : */
+
+    /** Pad icon at top of page */
+    .icon {
+        padding: 0px 8px;
+    }
+
+
+/*! Card links of external used items on bottom of page */
+    /** Locate footer on bottom of page - old*/
+
+    .footer {
+        background-color: black;
+        color: white;
+        bottom: 0;
+        position: fixed;
+        width: 100%;
+        text-align: center;
+        font-size: xx-small;
+    }
+
+    /** Style links in footer resources*/
+    .resources {
+        text-decoration: none;
+
+    }
+
+
+
+
+/*! Locate footer on bottom of page */
+/*
+    html {
+        height: 100%;
+        box-sizing: border-box;
+      }
+      *,
+      *:before,
+      *:after {
+        box-sizing: inherit;
+      }
+      body {
+        position: relative;
+        margin: 0;
+        padding-bottom: 3rem;
+        min-height: 100%;
+      }
+      .content {
+        margin: 0 auto;
+        padding-top: 64px;
+        max-width: 640px;
+        width: 94%;
+        line-height: 30px;
+
+      }
+      .content h1 {
+        margin-top: 0;
+      }
+      /**
+       * Footer Styles
+
+      .footer {
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          padding: 1rem;
+          background-color: black;
+          text-align: center;
+      }
+*/

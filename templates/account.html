@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+
+{% block title %}
+    Account
+{% endblock %}
+
+{% block main %}
+
+    <!--  TODO: see posts of your own by most recent first, with edit option, move vvvv to right hand side -->
+
+    <!--* All current users account info (except passwords) -->
+    <div class="card text-white border-2 bg-dark mb-3 mx-auto acct-card"> <!--TODO: change acct-card when photo is added-->
+        <div class="card-header border-bottom border-secondary">Your Account</div>
+        <div class="card-body card-body-custom">
+            {% for item in account %}
+                <div class="card-title">Account Info</div>
+                <div class="container mw-100 rounded p-4 card-text card-500px">
+                    {% for info in item %}
+                        <div class="d-flex border-bottom  wrap">
+                            <div class="mr-auto p-2 text-capitalize">{{ info }}: </div>
+                            <div class="grow4"></div>
+                            <div class="p-2">{{ item[info] }}</div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <br><br><br><br><!-- TODO: remove these and use a margin -->
+
+    <!--* Account Form -->
+    <div class="card text-white border-2 bg-dark mb-3 mx-auto acct-card">
+        <div class="card-header border-bottom border-secondary">Change Account Information</div>
+        <div class="card-body card-body-custom-custom">
+            <div class="card-title text-warning text-center">Note: Current password required to change any field</div>
+            <div class="container mw-100 rounded p-4 card-text card-500px">
+            {% from "_formhelpers.html" import render_field %}
+                <form method=post>
+                    {{ form.hidden_tag() }}
+                    <div class="mb-3 mx-auto width-75-card text-white">
+                        <dl>
+                            {{ render_field(form.name) }}
+                            {{ render_field(form.job) }}
+                            {{ render_field(form.phone) }}
+                            {{ render_field(form.email) }}
+                            {{ render_field(form.username) }}
+                            <br>
+                            {{ render_field(form.old_password) }}
+                            {{ render_field(form.new_password) }}
+                            {{ render_field(form.confirm) }}
+                        </dl>
+                        <br>
+                        {{ form.submit(class="btn btn-warning form-control") }}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

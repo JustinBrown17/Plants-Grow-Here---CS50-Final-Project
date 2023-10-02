@@ -1,0 +1,18 @@
+{# shows all fields + errors if field was incorrectly sumbitted #}
+{% macro render_field(field) %}
+<style>
+  li {
+    color: red;
+  }
+</style>
+  <dt>{{ field.label }}
+  <dd>{{ field(class="form-control", **kwargs)|safe }}
+  {% if field.errors %}
+    <ul class=errors>
+    {% for error in field.errors %}
+      <li>{{ error }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+  </dd>
+{% endmacro %}

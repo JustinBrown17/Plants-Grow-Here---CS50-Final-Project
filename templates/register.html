@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+
+    <div class="card text-white border-2 bg-dark mb-3 mx-auto register-card">
+        <div class="card-header border-bottom border-secondary">Register</div>
+        <div class="card-body card-body-custom">
+            {% from "_formhelpers.html" import render_field %}
+            <form method=post>
+                {{ form.hidden_tag() }}
+                <div class="width-75-card mb-3 mx-auto">
+                    <div class="card text-white bg-danger mb-3" >
+                        <h4 class="card-header">Privacy warning: </h4>
+                        <div class="card-body">
+                        <p class="card-text">Any visitor can view your name, job title, phone number and email address.</p>
+                        </div>
+                    </div>
+                    <br>
+                    <dl class="text-light">
+                        {{ render_field(form.name) }}
+                        {{ render_field(form.phone) }}
+                        {{ render_field(form.email) }}
+                        {{ render_field(form.username) }}
+                        {{ render_field(form.password) }}
+                        {{ render_field(form.confirm) }}
+
+                    </dl>
+                    <br>
+                    {{ form.submit(class="btn btn-warning form-control") }}
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

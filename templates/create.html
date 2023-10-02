@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Create
+{% endblock %}
+
+{% block main %}
+
+    <!--TODO: the text saves correctly but it isnt editable by owner, could make a page to edit posts that would pull desired post into editor? -->
+
+    <!--* Post Form -->
+    <div class="card text-white border-2 bg-dark mb-3 mx-auto">
+        <div class="card-header border-bottom border-secondary text-success">Create Post:</div>
+        {% from "_formhelpers.html" import render_field %}
+        <div class="card-body card-body-custom">
+            <form method="POST" enctype=multipart/form-data>
+                {{ form.hidden_tag() }}
+                {{ render_field(form.title) }}
+                <br><br>
+                {{ render_field(form.content) }}
+                <br>
+                {{ form.file(class="form-control") }}
+                <br>
+                {{ form.submit(class="btn btn-warning") }}
+            </form>
+            </div>
+        </div>
+    <!--! LOAD ckeditor: -->
+    {{ ckeditor.load() }}
+    {{ ckeditor.config(name='content', height="500") }}
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "layout.html" %}Home
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+
+    {% if posts %}
+        {% for post in posts %}
+            <div class="card text-white bg-dark border-2 mb-3 mx-auto">
+                <div class="card-header border-bottom border-secondary text-white text-capitalize">{{ post["title"] }}</div>
+                <div class="card-body card-body-custom">
+                    <div class="d-flex card-subtitle border-bottom wrap mb-2 container mw-100 p-0"> <!--p-4-->
+                        <div class="d-inline-flex">
+                            <p>By:&nbsp;</p>
+                            <a class="simple-anchor" href="/contact#{{ post['name'] }}">{{ post['name'] }}</a>
+                            <p class="text-capitalize">&nbsp;- {{ post['job'] }}</p>
+                        </div>
+                        <div class="grow2"></div>
+                        <div class=" d-inline-flex mr-auto">{{ post["date"] }}</div>
+                    </div>
+                    <div class="container mw-100 rounded p-4 card-text">
+                        <div class="d-flex wrap">
+                            <div class="mr-auto p-2">{{ post["body"] | safe}}</div>
+                            <div class="grow2"></div>
+                            {% if post['image_path'] %}
+                                {% set image = post['image_path'] %}
+                                    <div class="row">
+                                        <div class="col"></div>
+                                            <img class="col" src="static/posts/{{ image }}">
+                                        <div class="col"></div>
+                                    </div>
+                            {% elif post['file_path'] %} {# not an image: have a download link #}
+                                {% set file = post['file_path'] %}
+                                    <div class="row">
+                                        <a class="col" href="static/posts/{{ file }}" download="{{ file }}">
+                                            <button class="btn btn-warning mx-auto text-center w-100" type="button" style="min-width: 200px;">Download: {{ file }}</button>
+                                        </a>
+                                    </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br><br>
+        {% endfor %}
+    {% endif %}
+
+
+
+
+
+
+{% endblock %}
